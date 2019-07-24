@@ -2,77 +2,181 @@
     background-color: black;
     display: flex;
     justify-content: center;
-    padding: 15px;
-    img{        
-        width: 40%;
-        height: 40%;  
+    padding-bottom: 15px;
+    padding-top: 15px;
+    height: 7%;
+    width: 100%;
+    opacity: 0.9;
+    img {
+        width: 85%;
+        height: 85%;
+        margin-top: 6px;
     }
 }
-
 body {
     font-family: $main-font;
     padding: 0;
     margin: 0;
 }
-
-.seccion-arriba {
+.section-up {
     position: relative;
     display: flex;
-    flex-direction: column;
-    height: 500px;
-    .banner{
-        opacity: 0.5;
-    }
-    .header {
-        position: absolute;
-        background-color: white;
-        height: 14%;
+    flex-direction: row;
+    height: 515px;
+    .banner {
+        background-image: url(../imagenes/batman.jpg);
+        opacity: 0.4;
         width: 100%;
-        .search{
+        background-size: 100%; 
+        background-repeat: no-repeat;       
+        background-position-x: 95px;
+        background-position-y: 30%;
+        height: 100%;
+    }
+    .titulo-banner {
+    position: absolute;
+    margin-left: 46%;
+    margin-top: 20%;    
+        h1{
+            font-weight: 500;
+            font-size: 30px;
+            opacity: 0.9;
+            width: 100%;
+        }
+    }
+    
+    .header {
+        position: fixed;
+        background-color: white;
+        height: 12%;
+        width: 100%;
+        z-index: 1;
+        left: 94px;
+        .search {
             display: flex;
-            margin-left: 120px;
-            img{
-                width: 20px;                
+            padding: 30px;
+            .sinborde {
+                border: 0;                
+                font-size: 17px;
+                color: gray;
+                margin-left: 1%;
+            }
+            img {
+                width: 20px;
+                opacity: 0.5;
             }
         }
     }
-}
-.lista-categorias {
-    background-color: white;
-    width: 120px;
-    height: 500px;
-    position: absolute;
-    .container-category{
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .img-category-arrow { 
-        border-bottom: 1px solid lightgrey;
-        align-items: center;
-        display: flex;
-        flex-direction: column; 
-        h3{
-            font-size: 11px;
-            font-weight: unset;
-        }      
-        img{
-            width: 20px;        
-        }            
-    }
-    .img-category{
-        border-bottom: 1px solid lightgrey;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        h3{
-            font-size: 11px;
-            font-weight: unset;
+    .lista-categorias {
+        background-color: white;
+        width: 94px;
+        height: 100%;
+        position: fixed;
+        .container-category {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 17px;
         }
-        img{
-            width: 27px;            
-        }        
+        .img-category-arrow {
+            border-bottom: 1px solid lightgrey;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            opacity: 0.5;
+            height: 95px;
+            h3 {
+                font-size: 11px;
+                font-weight: unset;
+            }
+            img {
+                width: 12px;
+            }
+        }
+        .img-category {
+            border-bottom: 1px solid lightgrey;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            opacity: 0.5;
+            height: 95px;
+            h3 {
+                font-size: 11px;
+                font-weight: unset;
+            }
+            img {
+                width: 20px;
+            }
+        }
+    }  
+}
+.section-down {
+    background-color: whitesmoke;
+    padding-top: 3%;
+    padding-right: 3%;
+    margin-left: 94px;
+    // #show-movies-popular {
+    //     display: flex;
+    //     justify-content: space-evenly;
+    //     .movies-item-title{
+    //         font-weight: lighter;
+    //         font-size: 100%;
+    //     }
+    // }
+    
+    // #show-movies-popular * {
+    //     width: 95%;
+    //     display: flex;
+    //     flex-direction: column;
+    // }
+    .show-movie {
+        display: flex;
+        justify-content: space-evenly;
+        .movie-container{
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+            img{
+                width: 95%;
+                display: flex;
+                flex-direction: column;
+            }
+            .movies-item-title{
+                font-weight: lighter;
+                font-size: 100%;
+                display: flex;
+                flex-direction: column;
+                color: rgba(8,28,36,.5);
+            }
+        }
+        // .movies-item-title{
+        //     font-weight: lighter;
+        //     font-size: 100%;
+        // }
     }
-}    
-
+    
+    .section-movies-container{
+        padding: 25px;
+        .section {
+            display: flex;
+            height: fit-content;
+            justify-content: space-between;
+            
+    
+            h2{
+                height: fit-content;
+                font-size: 18px;
+                font-weight: 300;
+                line-height: 18px;
+                color: #081c24;
+            }
+            .view{
+                opacity: 0.5;
+                font-size: 11px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+    } 
+    }

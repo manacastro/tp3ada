@@ -2,11 +2,16 @@
   background-color: black;
   display: flex;
   justify-content: center;
-  padding: 15px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  height: 7%;
+  width: 100%;
+  opacity: 0.9;
 }
 .img-logo img {
-  width: 40%;
-  height: 40%;
+  width: 85%;
+  height: 85%;
+  margin-top: 6px;
 }
 
 body {
@@ -15,66 +20,146 @@ body {
   margin: 0;
 }
 
-.seccion-arriba {
+.section-up {
   position: relative;
   display: flex;
-  flex-direction: column;
-  height: 500px;
+  flex-direction: row;
+  height: 515px;
 }
-.seccion-arriba .banner {
-  opacity: 0.5;
+.section-up .banner {
+  background-image: url(../imagenes/batman.jpg);
+  opacity: 0.4;
+  width: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-x: 95px;
+  background-position-y: 30%;
+  height: 100%;
 }
-.seccion-arriba .header {
+.section-up .titulo-banner {
   position: absolute;
-  background-color: white;
-  height: 14%;
+  margin-left: 46%;
+  margin-top: 20%;
+}
+.section-up .titulo-banner h1 {
+  font-weight: 500;
+  font-size: 30px;
+  opacity: 0.9;
   width: 100%;
 }
-.seccion-arriba .header .search {
-  display: flex;
-  margin-left: 120px;
-}
-.seccion-arriba .header .search img {
-  width: 20px;
-}
-
-.lista-categorias {
+.section-up .header {
+  position: fixed;
   background-color: white;
-  width: 120px;
-  height: 500px;
-  position: absolute;
+  height: 12%;
+  width: 100%;
+  z-index: 1;
+  left: 94px;
 }
-.lista-categorias .container-category {
+.section-up .header .search {
+  display: flex;
+  padding: 30px;
+}
+.section-up .header .search .sinborde {
+  border: 0;
+  font-size: 17px;
+  color: gray;
+  margin-left: 1%;
+}
+.section-up .header .search img {
+  width: 20px;
+  opacity: 0.5;
+}
+.section-up .lista-categorias {
+  background-color: white;
+  width: 94px;
+  height: 100%;
+  position: fixed;
+}
+.section-up .lista-categorias .container-category {
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 17px;
 }
-.lista-categorias .img-category-arrow {
+.section-up .lista-categorias .img-category-arrow {
   border-bottom: 1px solid lightgrey;
   align-items: center;
   display: flex;
   flex-direction: column;
+  opacity: 0.5;
+  height: 95px;
 }
-.lista-categorias .img-category-arrow h3 {
+.section-up .lista-categorias .img-category-arrow h3 {
   font-size: 11px;
   font-weight: unset;
 }
-.lista-categorias .img-category-arrow img {
+.section-up .lista-categorias .img-category-arrow img {
+  width: 12px;
+}
+.section-up .lista-categorias .img-category {
+  border-bottom: 1px solid lightgrey;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.5;
+  height: 95px;
+}
+.section-up .lista-categorias .img-category h3 {
+  font-size: 11px;
+  font-weight: unset;
+}
+.section-up .lista-categorias .img-category img {
   width: 20px;
 }
-.lista-categorias .img-category {
-  border-bottom: 1px solid lightgrey;
-  align-items: center;
+
+.section-down {
+  background-color: whitesmoke;
+  padding-top: 3%;
+  padding-right: 3%;
+  margin-left: 94px;
+}
+.section-down .show-movie {
+  display: flex;
+  justify-content: space-evenly;
+}
+.section-down .show-movie .movie-container {
+  width: 95%;
   display: flex;
   flex-direction: column;
 }
-.lista-categorias .img-category h3 {
-  font-size: 11px;
-  font-weight: unset;
+.section-down .show-movie .movie-container img {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
 }
-.lista-categorias .img-category img {
-  width: 27px;
+.section-down .show-movie .movie-container .movies-item-title {
+  font-weight: lighter;
+  font-size: 100%;
+  display: flex;
+  flex-direction: column;
+  color: rgba(8, 28, 36, 0.5);
+}
+.section-down .section-movies-container {
+  padding: 25px;
+}
+.section-down .section-movies-container .section {
+  display: flex;
+  height: fit-content;
+  justify-content: space-between;
+}
+.section-down .section-movies-container .section h2 {
+  height: fit-content;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 18px;
+  color: #081c24;
+}
+.section-down .section-movies-container .section .view {
+  opacity: 0.5;
+  font-size: 11px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 /*# sourceMappingURL=main.css.map */
