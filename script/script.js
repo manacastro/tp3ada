@@ -8,6 +8,7 @@ const upcoming = document.getElementById(`show-movies-upcoming`);
 let peliculasUpcoming = upcoming.children[0];
 const nowPlaying = document.getElementById(`show-movies-now-playing`);
 const peliculasNowPlaying = nowPlaying.children[0];
+
 //INFO DE LAS CATEGORÍAS
 const updateCategoryPopular = () =>{
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)    
@@ -26,6 +27,7 @@ const updateCategoryPopular = () =>{
     });
 }
 updateCategoryPopular()
+
 const updateCategoryTopRated = () =>{
     fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`)
     .then(response => response.json())
@@ -42,6 +44,7 @@ const updateCategoryTopRated = () =>{
     })
 }
 updateCategoryTopRated();
+
 const updateCategoryUpcoming = () =>{
     fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}`)
     .then(response => response.json())

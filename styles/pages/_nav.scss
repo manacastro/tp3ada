@@ -16,27 +16,28 @@
 body {
     font-family: $main-font;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    width: 100%;
 }
 .section-up {
     position: relative;
     display: flex;
     flex-direction: row;
-    height: 515px;
+    height: 455px;
     .banner {
         background-image: url(../imagenes/batman.jpg);
-        opacity: 0.4;
+        opacity: 0.3;
         width: 100%;
         background-size: 100%; 
         background-repeat: no-repeat;       
-        background-position-x: 95px;
-        background-position-y: 30%;
+        background-position-x: 94px;
+        background-position-y: 32%;
         height: 100%;
     }
     .titulo-banner {
     position: absolute;
     margin-left: 46%;
-    margin-top: 20%;    
+    margin-top: 18%;    
         h1{
             font-weight: 500;
             font-size: 30px;
@@ -111,72 +112,72 @@ body {
         }
     }  
 }
+
 .section-down {
     background-color: whitesmoke;
     padding-top: 3%;
     padding-right: 3%;
     margin-left: 94px;
-    // #show-movies-popular {
-    //     display: flex;
-    //     justify-content: space-evenly;
-    //     .movies-item-title{
-    //         font-weight: lighter;
-    //         font-size: 100%;
-    //     }
-    // }
-    
-    // #show-movies-popular * {
-    //     width: 95%;
-    //     display: flex;
-    //     flex-direction: column;
-    // }
+  
     .show-movie {
         display: flex;
-        justify-content: space-evenly;
+        
         .movie-container{
             width: 95%;
             display: flex;
             flex-direction: column;
+            align-items: center;
             img{
-                width: 95%;
-                display: flex;
-                flex-direction: column;
-            }
+                width: 80%;
+                display: flex;  
+                }
             .movies-item-title{
                 font-weight: lighter;
-                font-size: 100%;
+                font-size: 14px;
                 display: flex;
                 flex-direction: column;
                 color: rgba(8,28,36,.5);
+                width: 80%;
             }
+            
         }
-        // .movies-item-title{
-        //     font-weight: lighter;
-        //     font-size: 100%;
-        // }
+          
     }
+   
+    .movie-container:hover .movies-item-title{
+        color: black;
+        cursor: pointer
+    }
+    .movie-container:hover img{
+        transform: scale(1.03);
+        transition-duration: 0.6s;
+        cursor: pointer        
+    }    
     
     .section-movies-container{
-        padding: 25px;
+        width: 100%;
+        margin-left: 2%;
         .section {
             display: flex;
-            height: fit-content;
+            width: 100%;
             justify-content: space-between;
-            
-    
-            h2{
+            padding-bottom: 2%;                       
+                h2{
                 height: fit-content;
                 font-size: 18px;
                 font-weight: 300;
                 line-height: 18px;
                 color: #081c24;
+                padding-left: 2%;
             }
+            
             .view{
                 opacity: 0.5;
                 font-size: 11px;
                 margin-top: 15px;
                 margin-bottom: 15px;
+                padding-right: 2%;                
             }
         }
     } 
-    }
+}    
