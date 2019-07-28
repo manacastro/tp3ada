@@ -1,0 +1,130 @@
+.fondo-negro-modal {
+  height: 1200px;
+  background-color: black;
+  opacity: 0.9;
+  display: flex;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+
+}
+.modal-box {
+  height: 640px;
+  position: absolute;
+  z-index: 2;
+  width: 58%;
+  margin-left: 16%;
+  margin-top: 10%;
+  // display: none;
+
+  .movie {
+    position: relative;
+
+    .movie-info {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      padding-left: 44%;
+      font-size: 14px;
+      height: 475px;
+      padding-bottom: 5%;
+      width: 100%;
+    }
+  }
+
+  .movie-container {
+    width: 100%;
+    #movie-profile{
+      width: 296px;
+      height: 450px;
+    }
+    .movie-title{
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+      position: absolute;
+      padding-left: 47%;
+      padding-top: 12%;
+      font-weight: 300;
+      line-height: 1.8;
+      #movie-tagline{
+        font-size: 14px;
+        color: white;
+        font-weight: 300;
+        margin-top: 0;
+      }
+    }
+    #movie-title-text {
+      color: indianred;
+      font-size: 30px;
+      margin-bottom: 0px;
+      line-height: 1.8;
+    }
+
+    .movie-main {
+      display: flex;
+    }
+
+    #movie-overview {
+      height: 475px;
+      font-weight: 300;
+      line-height: 1.8;
+      margin: 7%;
+    }
+    .movie-details {
+        margin: 7%;    
+
+      .movie-details-genre-title {
+        color: indianred;
+        font-weight: 300;
+        line-height: 1.8;
+        margin-bottom: 0px;
+      }
+      #movie-details-genre-text{
+        font-weight: 300;
+        line-height: 1.8;
+      }
+      .movie-details-date-title {
+        color: indianred;
+        font-weight: 300;
+        line-height: 1.8;
+        margin-bottom: 0px;
+      }
+      #movie-details-date-text{
+        font-weight: 300;
+        line-height: 1.8;
+      }
+    }
+    .movie-header {
+      background: darkolivegreen;
+      height: 316px;
+      margin-top: -3%;
+
+      .movie-poster-container {
+        width: 35%;
+        height: 400px;
+        display: flex;
+        position: absolute;
+        margin-top: 13%;
+      }
+    }
+  }
+
+  .modal-button-close {
+    display: block;
+    position: absolute;
+    top: -24px;
+    right: 0;
+    border: 0;
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    transition: background .5s ease;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+  }
+  .modal-button-close:hover {
+    background-color: indianred; 
+    }
+}
