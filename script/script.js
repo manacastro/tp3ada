@@ -37,7 +37,7 @@ let movieGenre = document.getElementById(`movie-details-genre-text`);
 let movieDate = document.getElementById(`movie-details-date-text`);
 let moviePoster = document.getElementById(`movie-poster-background`);
 let movieOverview = document.getElementById(`movie-overview`);
-const modalBackground = document.getElementsByClassName(`fondo-negro-modal`)[0];
+const modalBackground = document.getElementsByClassName(`fondo-black-modal`)[0];
 const modalBox = document.getElementsByClassName(`modal-box`)[0];
 let movieTagline = document.getElementById(`movie-tagline`);
 const movieClose = document.getElementById(`modal-button-close`);
@@ -72,119 +72,45 @@ updateCategory(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY
 //TRAER TODAS LAS PELICULAS POR CATEGORIA
 //menuAside 0 = logo; 1 = popular; 2 = top rated; 3 =upcoming; 4 = now playing
 //POPULAR MOVIES
-buttonPopular.onclick = () =>{
+const getInfo = (category, title) => {
     paginaActual = 1;
     allMoviesContainer.innerHTML = "";
     sectionAllMovies.classList.remove(`ocultar`);
     bannerSection.classList.add(`ocultar`);
     bodyDown.classList.add(`ocultar`);
-    getNumberMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${paginaActual}`);
-    allMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${paginaActual}`, "Popular Movies");
+    getNumberMovies(`https://api.themoviedb.org/3/movie/${category}?api_key=${API_KEY}&page=${paginaActual}`);
+    allMovies(`https://api.themoviedb.org/3/movie/${category}?api_key=${API_KEY}&page=${paginaActual}`, title);
     buttonLoadMore.onclick = () =>{
         paginaActual++;
-        allMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${paginaActual}`, "")
-    
+        allMovies(`https://api.themoviedb.org/3/movie/${category}?api_key=${API_KEY}&page=${paginaActual}`, title)
     }
 }
+buttonPopular.onclick = () =>{
+    getInfo("popular", "Popular Movies");
+}
 viewAll[0].children[1].onclick = () => {
-    paginaActual = 1;
-    allMoviesContainer.innerHTML = "";
-    sectionAllMovies.classList.remove(`ocultar`)
-    bannerSection.classList.add(`ocultar`);
-    bodyDown.classList.add(`ocultar`);
-    getNumberMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${paginaActual}`);
-    allMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${paginaActual}`, "Popular Movies");
-    buttonLoadMore.onclick = () =>{
-        paginaActual++;
-        allMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${paginaActual}`, "")
-    
-    }
+    getInfo("popular", "Popular Movies");
 }
 //TOP RATED MOVIES
 buttonTopRated.onclick = () =>{
-    paginaActual = 1;
-    allMoviesContainer.innerHTML = "";
-    sectionAllMovies.classList.remove(`ocultar`)
-    bannerSection.classList.add(`ocultar`);
-    bodyDown.classList.add(`ocultar`);
-    getNumberMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${paginaActual}`);
-    allMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${paginaActual}`, "Top Rated Movies");
-    buttonLoadMore.onclick = () =>{
-        paginaActual++;
-        allMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${paginaActual}`, "")
-    
-    }
+    getInfo("top_rated", "Top Rated Movies");
 }
 viewAll[1].children[1].onclick = () => {
-    paginaActual = 1;
-    allMoviesContainer.innerHTML = "";
-    sectionAllMovies.classList.remove(`ocultar`)
-    bannerSection.classList.add(`ocultar`);
-    bodyDown.classList.add(`ocultar`);
-    getNumberMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${paginaActual}`);
-    allMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${paginaActual}`, "Top Rated Movies");
-    buttonLoadMore.onclick = () =>{
-        paginaActual++;
-        allMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${paginaActual}`, "")
-    
-    }
+    getInfo("top_rated", "Top Rated Movies");
 }
 //UPCOMING MOVIES
 buttonUpcoming.onclick = () =>{
-    paginaActual = 1;
-    allMoviesContainer.innerHTML = "";
-    sectionAllMovies.classList.remove(`ocultar`)
-    bannerSection.classList.add(`ocultar`);
-    bodyDown.classList.add(`ocultar`);
-    getNumberMovies(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=${paginaActual}`);
-    allMovies(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=${paginaActual}`, "Upcoming Movies");
-    buttonLoadMore.onclick = () =>{
-        paginaActual++;
-        allMovies(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=${paginaActual}`, "")
-    }
+    getInfo("upcoming", "Upcoming Movies");
 }
 viewAll[2].children[1].onclick = () => {
-    paginaActual = 1;
-    allMoviesContainer.innerHTML = "";
-    sectionAllMovies.classList.remove(`ocultar`)
-    bannerSection.classList.add(`ocultar`);
-    bodyDown.classList.add(`ocultar`);
-    getNumberMovies(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=${paginaActual}`);
-    allMovies(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=${paginaActual}`, "Upcoming Movies");
-    buttonLoadMore.onclick = () =>{
-        paginaActual++;
-        allMovies(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=${paginaActual}`, "")
-    }
+    getInfo("upcoming", "Upcoming Movies");
 }
 //NOW PLAYING MOVIES 
 buttonNowPlaying.onclick = () =>{
-    paginaActual = 1;
-    allMoviesContainer.innerHTML = "";
-    sectionAllMovies.classList.remove(`ocultar`)
-    bannerSection.classList.add(`ocultar`);
-    bodyDown.classList.add(`ocultar`);
-    getNumberMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${paginaActual}`);
-    allMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${paginaActual}`, "Now Playing Movies");
-    buttonLoadMore.onclick = () =>{
-        paginaActual++;
-        allMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${paginaActual}`, "")
-    }
-    
+    getInfo("now_playing", "Now Playing Movies");
 }
 viewAll[3].children[1].onclick = () => {
-    paginaActual = 1;
-    allMoviesContainer.innerHTML = "";
-    sectionAllMovies.classList.remove(`ocultar`)
-    bannerSection.classList.add(`ocultar`);
-    //que el click tenga un numero;
-    bodyDown.classList.add(`ocultar`);
-    getNumberMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${paginaActual}`);
-    allMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${paginaActual}`, "Now Playing Movies");
-    buttonLoadMore.onclick = () =>{
-        paginaActual++;
-        allMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${paginaActual}`, "")
-    }
-    
+    getInfo("now_playing", "Now Playing Movies");
 }
 //--------------------------------------------------------------------------
 //OBTENER NUMERO DE RESULTADOS DE PELICULAS POR CATEGORÍA
@@ -210,11 +136,9 @@ const allMovies = (url, title) =>{
             let nuevaPelicula = peliculas.cloneNode(true);
             if(sel.poster_path != null){
                 nuevaPelicula.children[0].src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${sel.poster_path}`;
-                console.log(sel.title + ' no es null ' + sel.poster_path);
                 
             } else{
                 nuevaPelicula.children[0].src = "../imagenes/no-image.png";
-                console.log(sel.title + ' es null ' + sel.poster_path);
             }
             nuevaPelicula.children[1].innerHTML = sel.title;
             allMoviesContainer.appendChild(nuevaPelicula);
@@ -307,7 +231,6 @@ const showModal = peliculaId => {
         moviePoster.style = `background-image: url("https://image.tmdb.org/t/p/w500${data.backdrop_path}")`;
         movieOverview.innerText = data.overview;
         document.body.style.overflow = 'hidden';
-
         movieClose.onclick = () =>{
             modalBackground.classList.add(`ocultar`);
             modalBox.classList.add(`ocultar`);
