@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     background-color: whitesmoke;
-    padding-top: 3%;
+    padding-top: 10%;
     flex-direction: column;
     align-items: center;
     &.ocultar{
@@ -12,12 +12,10 @@
     }
   
     #container-movies{
-        width: 80%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
         width: 90%;
-        margin-left: 8%;
         .movie-main{
             width: 17%;
             height: 200%;
@@ -65,7 +63,6 @@
 .title-cat{
     background-color: whitesmoke;
     height: 100%;
-    padding-left: 70px;
     width: 86%;
     display: flex;
     justify-content: space-between;

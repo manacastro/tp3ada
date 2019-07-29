@@ -1,11 +1,13 @@
 .fondo-negro-modal {
-  height: 1200px;
-  background-color: black;
-  opacity: 0.9;
+  height: 100vh;
+  background-color: rgba(8,28,36,.98);
   display: flex;
   width: 100%;
   z-index: 1;
   position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: auto;
 }
 .modal-box {
   height: 640px;
@@ -26,10 +28,11 @@
       height: 475px;
       padding-bottom: 5%;
       width: 100%;
+      margin-bottom: 5%;
     }
   }
   .movie-container {
-    width: 100%;
+    width: 98%;
     #movie-profile{
       width: 296px;
       height: 450px;
@@ -124,8 +127,8 @@
   }
   #modal-button-close {
     position: absolute;
-    top: -24px;
-    right: 0;
+    top: 0px;
+    right: 15px;
     border: 0;
     background: transparent;
     width: 40px;
