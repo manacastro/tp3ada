@@ -1,5 +1,8 @@
+//INFO GENERAL
 const API_KEY = "e0b04ff59adaecdf17841706f387eba8";
 let paginaActual = 1;
+const body = document.getElementById(`body`);
+//CONTAINER CATEGORIAS
 const popular = document.getElementById('show-movies-popular');
 const topRated = document.getElementById('show-movies-top-rated');
 const upcoming = document.getElementById(`show-movies-upcoming`);
@@ -37,6 +40,7 @@ let movieOverview = document.getElementById(`movie-overview`);
 const modalBackground = document.getElementsByClassName(`fondo-negro-modal`)[0];
 const modalBox = document.getElementsByClassName(`modal-box`)[0];
 let movieTagline = document.getElementById(`movie-tagline`);
+const movieClose = document.getElementById(`modal-button-close`);
 //--------------------------------------------------------------------------
 //TRAER LAS CINCO PELIS POR CADA PELICULA
 const updateCategory = (url, container) => {
@@ -74,8 +78,6 @@ menuAside.children[1].onclick = () =>{
     sectionAllMovies.classList.remove(`ocultar`);
     bannerImg.classList.add(`ocultar`);
     bannerTitle.classList.add(`ocultar`);
-    // sectionAllMovies.classList.remove(`ocultar-section`);
-    //que el click tenga un numero;
     bodyDown.classList.add(`ocultar`);
     getNumberMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${paginaActual}`);
     allMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${paginaActual}`, "Popular Movies");
@@ -167,9 +169,6 @@ menuAside.children[4].onclick = () =>{
     sectionAllMovies.classList.remove(`ocultar`)
     bannerImg.classList.add(`ocultar`);
     bannerTitle.classList.add(`ocultar`);
-    //agregar clase de mostrar - classList.add;
-    //sacar la clase de ocultar -- classList.remove;
-    //que el click tenga un numero;
     bodyDown.classList.add(`ocultar`);
     getNumberMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${paginaActual}`);
     allMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${paginaActual}`, "Now Playing Movies");
@@ -196,12 +195,12 @@ viewAll[3].children[1].onclick = () => {
     
 }
 //--------------------------------------------------------------------------
-//OBTENER NUMERO de RESULTADOS DE PELICULAS POR CATEGORÍA
+//OBTENER NUMERO DE RESULTADOS DE PELICULAS POR CATEGORÍA
 const getNumberMovies = (url) => {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        // console.log(data);
         
         numbersMovie.innerText = `${data.total_results.toLocaleString()} results`;
     })
@@ -219,8 +218,11 @@ const allMovies = (url, title) =>{
             let nuevaPelicula = peliculas.cloneNode(true);
             if(sel.poster_path != null){
                 nuevaPelicula.children[0].src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${sel.poster_path}`;
+                console.log(sel.title + ' no es null ' + sel.poster_path);
+                
             } else{
                 nuevaPelicula.children[0].src = "../imagenes/no-image.png";
+                console.log(sel.title + ' es null ' + sel.poster_path);
             }
             nuevaPelicula.children[1].innerHTML = sel.title;
             allMoviesContainer.appendChild(nuevaPelicula);
@@ -241,16 +243,20 @@ const searchKeyWord = (url, title) => {
     fetch(url)
     .then(response => response.json())
     .then(data =>{
-        console.log(data);
-        console.log(data.results[0]);
-        
+        // console.log(data);
+        // console.log(data.results[0]);
         titleCategory.innerText = title;
         let seleccionadas = data.results.slice(0, 20);
         
         if(data.results.length >= 1){ 
         for(const sel of seleccionadas){
             let nuevaPelicula = peliculas.cloneNode(true);
-            nuevaPelicula.children[0].src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${sel.poster_path}`;
+            if(sel.poster_path != null){
+                nuevaPelicula.children[0].src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${sel.poster_path}`;
+            } else {
+                nuevaPelicula.children[0].src = "../imagenes/no-image.png";
+            }
+            
             nuevaPelicula.children[1].innerHTML = sel.title;
             allMoviesContainer.appendChild(nuevaPelicula);
             nuevaPelicula.onclick = () =>{
@@ -258,13 +264,9 @@ const searchKeyWord = (url, title) => {
                 modalBox.classList.remove(`ocultar`);
                 showModal(sel.id);
             }
-            
         }
         buttonLoadMore.innerText = "LOAD MORE";
         sectionAllMovies.appendChild(buttonLoadMore);
-        
-        
-        
     } else{
         bannerTitle = `Nothing Found`;
     }
@@ -296,13 +298,13 @@ const showModal = peliculaId => {
     )
     .then(response => response.json())
     .then(data =>{
-       console.log(data);
-        //no se si poner el [0] al lado de results. Fijarse cuando esté el modal
+    //    console.log(data);
+        movieGenre.innerText = "";
         movieTitle.innerText = data.title;
         for(let i = 0; i < data.genres.length; i++){
             if(data.genres.length > 1){
                 movieGenre.innerText += ` ${data.genres[i].name}, `;
-                //agregarle la coma
+                
             } else {
                 movieGenre.innerText += data.genres[i].name;
             }
@@ -311,9 +313,18 @@ const showModal = peliculaId => {
         
         movieTagline.innerText = data.tagline;
         movieDate.innerText = data.release_date;
-        movieProfile.src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${data.poster_path}`;
-        moviePoster.src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${data.backdrop_path}`;
+        movieProfile.src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2${data.poster_path}`;
+        // moviePoster.src = `https://image.tmdb.org/t/p/w500${data.backdrop_path}`;
+
+        moviePoster.style = `background-image: url("https://image.tmdb.org/t/p/w500${data.backdrop_path}");`
         movieOverview.innerText = data.overview;
+        movieClose.onclick = () =>{
+            modalBackground.classList.add(`ocultar`);
+            modalBox.classList.add(`ocultar`)
+        }
+        modalBackground.onclick = () =>{
+            modalBackground.classList.add(`ocultar`);
+            modalBox.classList.add(`ocultar`)
+        }
     })
 }
-// showModal(`420818`);

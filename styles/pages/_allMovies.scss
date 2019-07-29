@@ -20,9 +20,10 @@
         margin-left: 8%;
         .movie-main{
             width: 17%;
-            height: 380px;
+            height: 200%;
+            margin-top: 4%;
             img{
-                width: 88%;
+                width: 90%;
             }
             p{
                 font-weight: lighter;
@@ -46,23 +47,25 @@
     }
     #load-more {
         height: 93%; 
-        width: 125px;
+        width: 115px;
         margin-bottom: 25px;
-        height: 32px;        
+        margin-top: 4%;
+        height: 38px;        
         border: 0;
         border: 1px solid;
         background-color: whitesmoke;
+        outline: none;
     }
     #load-more:hover{
         background-color: black;
         color: white;
+        
     }
 }
 .title-cat{
     background-color: whitesmoke;
     height: 100%;
     padding-left: 70px;
-    margin-bottom: 40px;
     width: 86%;
     display: flex;
     justify-content: space-between;
