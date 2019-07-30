@@ -42,7 +42,7 @@ const modalBackground = document.getElementsByClassName(`fondo-black-modal`)[0];
 const modalBox = document.getElementsByClassName(`modal-box`)[0];
 let movieTagline = document.getElementById(`movie-tagline`);
 const movieClose = document.getElementById(`modal-button-close`);
-//--------------------------------------------------------------------------
+
 //TRAER LAS CINCO PELIS POR CADA PELICULA
 const updateCategory = (url, container) => {
     fetch(url)
@@ -68,8 +68,7 @@ updateCategory(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`, 
 updateCategory(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`, topRated);
 updateCategory(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}`, upcoming);
 updateCategory(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`, nowPlaying);
-//-------------------------------------------------------------------------
-//--------------------------------------------------------------------------
+
 //TRAER TODAS LAS PELICULAS POR CATEGORIA
 //menuAside 0 = logo; 1 = popular; 2 = top rated; 3 =upcoming; 4 = now playing
 
@@ -88,7 +87,6 @@ const getInfo = (category, title) => {
 
 }
 //POPULAR
-
 buttonPopular.onclick = () =>{
     buttonTopRated.style.backgroundColor = `white`;
     buttonUpcoming.style.backgroundColor = `white`;
@@ -148,18 +146,15 @@ viewAll[3].children[1].onclick = () => {
     getInfo("now_playing", "Now Playing Movies");
     buttonNowPlaying.style.backgroundColor = `whitesmoke`;
 }
-//--------------------------------------------------------------------------
+
 //OBTENER NUMERO DE RESULTADOS DE PELICULAS POR CATEGORÍA
 const getNumberMovies = (url) => {
     fetch(url)
     .then(response => response.json())
-    .then(data => {
-        // console.log(data);
-        
+    .then(data => {     
         numbersMovie.innerText = `${data.total_results.toLocaleString()} results`;
     })
 }
-//--------------------------------------------------------------------------
 //UNICA FUNCION PARA TRAER TODAS LAS PELICULAS DEPENDIENDO LA URL(CATEOGRIA)
 const allMovies = (url, title) =>{
     fetch(url)
@@ -189,7 +184,6 @@ const allMovies = (url, title) =>{
     }
     )
 }
-//--------------------------------------------------------------------------
 //INFO PELICULA BUSCADA POR PALABRA CLAVE
 const searchKeyWord = (url, title) => {
     fetch(url)
@@ -247,13 +241,11 @@ search.onkeypress = event => {
         } 
     } 
 }
-//--------------------------------------------------------------------------
 //MODAL
 const showModal = peliculaId => {
     fetch(`https://api.themoviedb.org/3/movie/${peliculaId}?api_key=${API_KEY}`)
     .then(response => response.json())
-    .then(data =>{
-    //    console.log(data);
+    .then(data =>{    
         movieGenre.innerText = "";
         movieTitle.innerText = data.title;
         for(let i = 0; i < data.genres.length; i++){
@@ -266,8 +258,7 @@ const showModal = peliculaId => {
         
         movieTagline.innerText = data.tagline;
         movieDate.innerText = data.release_date;
-        movieProfile.src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2${data.poster_path}`;
-        // moviePoster.src = `https://image.tmdb.org/t/p/w500${data.backdrop_path}`;
+        movieProfile.src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2${data.poster_path}`;        
         moviePoster.style = `background-image: url("https://image.tmdb.org/t/p/w500${data.backdrop_path}")`;
         movieOverview.innerText = data.overview;
         document.body.style.overflow = 'hidden';
