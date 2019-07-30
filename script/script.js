@@ -9,6 +9,7 @@ const upcoming = document.getElementById(`show-movies-upcoming`);
 const nowPlaying = document.getElementById(`show-movies-now-playing`);
 //SEARCH
 const search = document.getElementById(`search`);
+
 //BANNER
 const bannerSection = document.getElementById(`banner`);
 let bannerTitle = document.getElementById(`title-banner`);
@@ -71,7 +72,7 @@ updateCategory(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY
 //--------------------------------------------------------------------------
 //TRAER TODAS LAS PELICULAS POR CATEGORIA
 //menuAside 0 = logo; 1 = popular; 2 = top rated; 3 =upcoming; 4 = now playing
-//POPULAR MOVIES
+
 const getInfo = (category, title) => {
     paginaActual = 1;
     allMoviesContainer.innerHTML = "";
@@ -84,33 +85,68 @@ const getInfo = (category, title) => {
         paginaActual++;
         allMovies(`https://api.themoviedb.org/3/movie/${category}?api_key=${API_KEY}&page=${paginaActual}`, title)
     }
+
 }
+//POPULAR
+
 buttonPopular.onclick = () =>{
+    buttonTopRated.style.backgroundColor = `white`;
+    buttonUpcoming.style.backgroundColor = `white`;
+    buttonNowPlaying.style.backgroundColor = `white`;
     getInfo("popular", "Popular Movies");
+    buttonPopular.style.backgroundColor = `whitesmoke`;
 }
 viewAll[0].children[1].onclick = () => {
+    buttonTopRated.style.backgroundColor = `white`;
+    buttonUpcoming.style.backgroundColor = `white`;
+    buttonNowPlaying.style.backgroundColor = `white`;
     getInfo("popular", "Popular Movies");
+    buttonPopular.style.backgroundColor = `whitesmoke`;
 }
 //TOP RATED MOVIES
 buttonTopRated.onclick = () =>{
+    buttonPopular.style.backgroundColor = `white`;
+    buttonUpcoming.style.backgroundColor = `white`;
+    buttonNowPlaying.style.backgroundColor = `white`;
     getInfo("top_rated", "Top Rated Movies");
+    buttonTopRated.style.backgroundColor = `whitesmoke`;
 }
 viewAll[1].children[1].onclick = () => {
+    buttonPopular.style.backgroundColor = `white`;
+    buttonUpcoming.style.backgroundColor = `white`;
+    buttonNowPlaying.style.backgroundColor = `white`;
     getInfo("top_rated", "Top Rated Movies");
+    buttonTopRated.style.backgroundColor = `whitesmoke`;
 }
 //UPCOMING MOVIES
 buttonUpcoming.onclick = () =>{
+    buttonPopular.style.backgroundColor = `white`;
+    buttonTopRated.style.backgroundColor = `white`;
+    buttonNowPlaying.style.backgroundColor = `white`;
     getInfo("upcoming", "Upcoming Movies");
+    buttonUpcoming.style.backgroundColor = `whitesmoke`;
 }
 viewAll[2].children[1].onclick = () => {
+    buttonPopular.style.backgroundColor = `white`;
+    buttonTopRated.style.backgroundColor = `white`;
+    buttonNowPlaying.style.backgroundColor = `white`;
     getInfo("upcoming", "Upcoming Movies");
+    buttonUpcoming.style.backgroundColor = `whitesmoke`;
 }
 //NOW PLAYING MOVIES 
 buttonNowPlaying.onclick = () =>{
+    buttonPopular.style.backgroundColor = `white`;
+    buttonTopRated.style.backgroundColor = `white`;
+    buttonUpcoming.style.backgroundColor = `white`;
     getInfo("now_playing", "Now Playing Movies");
+    buttonNowPlaying.style.backgroundColor = `whitesmoke`;
 }
 viewAll[3].children[1].onclick = () => {
+    buttonPopular.style.backgroundColor = `white`;
+    buttonTopRated.style.backgroundColor = `white`;
+    buttonUpcoming.style.backgroundColor = `white`;
     getInfo("now_playing", "Now Playing Movies");
+    buttonNowPlaying.style.backgroundColor = `whitesmoke`;
 }
 //--------------------------------------------------------------------------
 //OBTENER NUMERO DE RESULTADOS DE PELICULAS POR CATEGORÍA
@@ -159,8 +195,6 @@ const searchKeyWord = (url, title) => {
     fetch(url)
     .then(response => response.json())
     .then(data =>{
-        // console.log(data);
-        // console.log(data.results[0]);
         titleCategory.innerText = title;
         let seleccionadas = data.results.slice(0, 20);
         
@@ -183,8 +217,14 @@ const searchKeyWord = (url, title) => {
         }
         buttonLoadMore.innerText = "LOAD MORE";
         sectionAllMovies.appendChild(buttonLoadMore);
-    } else{
-        bannerTitle = `Nothing Found`;
+     } else{
+        bannerTitle.innerText = `Nothing Found`;
+        sectionAllMovies.classList.add(`ocultar`);
+        bannerTitle.style.fontSize = `30px`;
+        bannerTitle.style.fontFamily = `"Roboto", sans-serif`;
+        bannerTitle.style.fontWeight = `500`;
+        bannerSection.style.height = `740px`;
+
     }
     })
 }
@@ -202,10 +242,10 @@ search.onkeypress = event => {
             searchKeyWord(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search.value}&page=${paginaActual}`, "Search Results")
             buttonLoadMore.onclick = () =>{
                 paginaActual++;
-                allMovies(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search.value}&page=${paginaActual}`, "")
+                allMovies(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search.value}&page=${paginaActual}`, "Search Results")
             }
-        }
-    }
+        } 
+    } 
 }
 //--------------------------------------------------------------------------
 //MODAL

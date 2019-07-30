@@ -78,7 +78,7 @@ body {
 
     #lista-categorias {
         background-color: white;
-        width: 94px;
+        width: 95px;
         height: 100%;
         position: fixed;
 
@@ -104,11 +104,10 @@ body {
         }
       
         .container-category {
-            padding: 10px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin-top: 17px;
+            align-items: center;            
             border-bottom: 1px solid lightgrey;
             cursor: pointer;
             .imgCateg {
